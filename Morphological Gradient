@@ -1,1 +1,20 @@
+import cv2
+import numpy as np
+
+img = cv2.imread('C:/Users/91954/Pictures/stinkbug.png')
+
+binr = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+kernel = np.ones((3,3), dtype="uint8")
+
+
+invert = cv2.bitwise_not(binr)
+
+
+morph_gradient = cv2.morphologyEx(invert,
+                                  cv2.MORPH_GRADIENT,
+                                  kernel)
+
+cv.imshow("Morph", morph_gradient)
+cv.waitKey(0)
 
