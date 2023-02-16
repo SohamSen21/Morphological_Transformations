@@ -1,2 +1,16 @@
 
+import numpy as np
+import cv2 as cv
 
+img=cv.imread('C:/Users/91954/Pictures/stinkbug.png')
+
+img=cv.resize(img, (800,600))
+cv.imshow("Initial",img)
+cv.waitKey(0)
+
+kernel = np.ones((7,7), dtype="uint8")
+
+dilated_img=cv.dilate(img, kernel, iterations=2)
+org_img_dilate_img=np.hstack((img, erode_img))
+cv.imshow("Dilated_Image", org_img_dilate_img)
+cv.waitKey(0)
